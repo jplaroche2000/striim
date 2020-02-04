@@ -1,6 +1,6 @@
 # striim
 
-Run Oracle and Sriim Docker images
+Run Oracle and Striim Docker images
 ==================================
 
 Oracle
