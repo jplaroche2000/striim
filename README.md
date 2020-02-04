@@ -29,7 +29,7 @@ deploy jdb driver:
 docker restart striim-3.7.4
 
 adjust /etc/hosts:
-cat >> /etc/hosts
+- cat >> /etc/hosts
 34.95.11.111    kafka_1
 35.225.220.10   zoo1
 34.66.94.46     zoo2
