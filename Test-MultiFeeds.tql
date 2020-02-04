@@ -39,7 +39,7 @@ Compression: false,
   Username: 'scott',
   TransactionBufferSpilloverSize: '1MB',
   OutboundServerProcessName: 'WebActionXStream',
-  Password: 'm0tsC6towUWHmnjs9PA6Hg==',
+  Password: 'tiger',
   Password_encrypted: 'true' ) 
 OUTPUT TO PosDataStream  ;
 
