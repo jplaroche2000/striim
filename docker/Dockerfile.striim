@@ -6,5 +6,7 @@ USER root
 
 COPY striim/ojdbc7-12.1.0.2.jar /opt/striim/lib/ojdbc7-12.1.0.2.jar
 
+RUN  chown -R striim:striim /opt/striim/lib/ojdbc7-12.1.0.2.jar && chmod ug+rwx /opt/striim/lib/ojdbc7-12.1.0.2.jar
+
 
 
