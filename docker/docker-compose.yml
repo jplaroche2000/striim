@@ -1,0 +1,28 @@
+version: "3.2"
+services:
+  oracle-database-11.2.0.2-xe:
+    image: oracle/database:11.2.0.2-xe
+    ports:
+      - "1521:1521"
+      - "8080:8080"
+    shm_size: 1g
+    volumes:
+      - /home/oracle/scripts/setup:/u01/app/oracle/scripts/setup
+      - /home/oracle/scripts/startup:/u01/app/oracle/scripts/startup
+      - /home/oracle/oradata:/u01/app/oracle/oradata     
+    networks:
+      - striim_oracle_net
+    environment:
+      ORACLE_PWD: tiger
+  striim-3.7.4:
+    image: striim/evalversion
+    ports:
+      - "80:9080"
+    networks:
+      - striim_oracle_net
+    environment:
+      STRIIM_ACCEPT_EULA: Y      
+networks:
+  striim_oracle_net:
+    external: true
+
