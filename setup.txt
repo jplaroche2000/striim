@@ -37,7 +37,7 @@ cat >> /etc/hosts
 Swarm:
 ------
 
-Custome images must be used:
+Custom images must be used:
 
 cd ~/git-projects/striim/docker
 docker build -t custom-striim -f Dockerfile.striim .
