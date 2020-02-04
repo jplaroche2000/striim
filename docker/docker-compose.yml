@@ -16,7 +16,7 @@ services:
       - type: tmpfs
         target: /dev/shm
         tmpfs:
-          size: 1024000000 # this means 1GB
+          size: 1073741824 # this means 1GB
     networks:
       - striim_oracle_net
     environment:
