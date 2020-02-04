@@ -29,29 +29,13 @@ Compression: false,
   Password_encrypted: 'false' ) 
 OUTPUT TO PosDataStream  ;
 
-CREATE  TARGET KafkaBucket USING Global.KafkaWriter VERSION '2.1.0' ( 
-brokerAddress: '35.225.220.10:9092',
-  Topic: 'bucket',
-  Mode: 'Sync',
-  KafkaConfigValueSeparator: '=',
-  KafkaConfigPropertySeparator: ';',
-  KafkaConfig: 'request.timeout.ms=60001;session.timeout.ms=60000',
-  ParallelThreads: '',
-  MessageHeader: '' ) 
-FORMAT USING Global.JSONFormatter  ( jsonobjectdelimiter: '\n',
-  jsonMemberDelimiter: '\n',
-  EventsAsArrayOfJsonObjects: 'true' ) 
-INPUT FROM admin.PosDataStream;
-
-CREATE OR REPLACE CQ CQ_CUSTOMER INSERT INTO admin.Kafka_Input_Topic_Customer SELECT * FROM PosDataStream p WHERE META(p, "TableName").toString() == 'SCOTT.CUSTOMER';
-
-CREATE OR REPLACE TARGET KafkaCustomer USING Global.KafkaWriter VERSION '2.1.0' ( 
+CREATE OR REPLACE TARGET KafkaBucket USING Global.KafkaWriter VERSION '2.1.0' ( 
 KafkaConfigPropertySeparator: ';',
   Mode: 'Sync',
   adapterName: 'KafkaWriter',
   MessageHeader: '',
-  Topic: 'customer',
-  brokerAddress: '35.225.220.10:9092',
+  Topic: 'bucket',
+  brokerAddress: 'kafka_1:9092',
   KafkaConfigValueSeparator: '=',
   KafkaConfig: 'request.timeout.ms=60001;session.timeout.ms=60000' ) 
 FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter',
@@ -59,7 +43,37 @@ FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter'
   jsonMemberDelimiter: '\n',
   jsonobjectdelimiter: '\n',
   EventsAsArrayOfJsonObjects: 'true' ) 
-INPUT FROM admin.Kafka_Input_Topic_Customer;
+INPUT FROM admin.PosDataStream;
+
+CREATE OR REPLACE TARGET FileWriter USING Global.FileWriter  ( 
+filename: 'out.txt',
+  rolloveronddl: 'true',
+  rolloverpolicy: 'EventCount:10000,Interval:30s',
+  flushpolicy: 'EventCount:10000,Interval:30s',
+  encryptionpolicy: '',
+  DataEncryptionKeyPassphrase: '' ) 
+FORMAT USING Global.JSONFormatter  ( jsonobjectdelimiter: '\n',
+  jsonMemberDelimiter: '\n',
+  EventsAsArrayOfJsonObjects: 'true' ) 
+INPUT FROM admin.PosDataStream;
+
+CREATE OR REPLACE CQ CQ_ADDRESS INSERT INTO admin.Kafka_Input_Topic_Address SELECT * FROM PosDataStream p WHERE META(p, "TableName").toString() == 'SCOTT.ADDRESS';
+
+CREATE OR REPLACE TARGET KafkaAddress USING Global.KafkaWriter VERSION '2.1.0' ( 
+KafkaConfigPropertySeparator: ';',
+  Mode: 'Sync',
+  adapterName: 'KafkaWriter',
+  MessageHeader: '',
+  Topic: 'address',
+  brokerAddress: 'kafka_1:9092',
+  KafkaConfigValueSeparator: '=',
+  KafkaConfig: 'request.timeout.ms=60001;session.timeout.ms=60000' ) 
+FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter',
+  formatterName: 'JSONFormatter',
+  jsonMemberDelimiter: '\n',
+  jsonobjectdelimiter: '\n',
+  EventsAsArrayOfJsonObjects: 'true' ) 
+INPUT FROM admin.Kafka_Input_Topic_Address;
 
 CREATE OR REPLACE CQ CQ_ADDRESS_LINK INSERT INTO admin.Kafka_Input_Topic_AddressLink SELECT * FROM PosDataStream p WHERE META(p, "TableName").toString() == 'SCOTT.ADDRESS_LINK';
 
@@ -69,7 +83,7 @@ KafkaConfigPropertySeparator: ';',
   adapterName: 'KafkaWriter',
   MessageHeader: '',
   Topic: 'address_link',
-  brokerAddress: '35.225.220.10:9092',
+  brokerAddress: 'kafka_1:9092',
   KafkaConfigValueSeparator: '=',
   KafkaConfig: 'request.timeout.ms=60001;session.timeout.ms=60000' ) 
 FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter',
@@ -87,7 +101,7 @@ KafkaConfigPropertySeparator: ';',
   adapterName: 'KafkaWriter',
   MessageHeader: '',
   Topic: 'customer_order',
-  brokerAddress: '35.225.220.10:9092',
+  brokerAddress: 'kafka_1:9092',
   KafkaConfigValueSeparator: '=',
   KafkaConfig: 'request.timeout.ms=60001;session.timeout.ms=60000' ) 
 FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter',
@@ -97,17 +111,23 @@ FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter'
   EventsAsArrayOfJsonObjects: 'true' ) 
 INPUT FROM admin.Kafka_Input_Topic_CustomerOrder;
 
-CREATE OR REPLACE TARGET FileWriter USING Global.FileWriter  ( 
-filename: 'out.txt',
-  rolloveronddl: 'true',
-  rolloverpolicy: 'EventCount:10000,Interval:30s',
-  flushpolicy: 'EventCount:10000,Interval:30s',
-  encryptionpolicy: '',
-  DataEncryptionKeyPassphrase: '' ) 
-FORMAT USING Global.JSONFormatter  ( jsonobjectdelimiter: '\n',
+CREATE OR REPLACE CQ CQ_CUSTOMER INSERT INTO admin.Kafka_Input_Topic_Customer SELECT * FROM PosDataStream p WHERE META(p, "TableName").toString() == 'SCOTT.CUSTOMER';
+
+CREATE OR REPLACE TARGET KafkaCustomer USING Global.KafkaWriter VERSION '2.1.0' ( 
+KafkaConfigPropertySeparator: ';',
+  Mode: 'Sync',
+  adapterName: 'KafkaWriter',
+  MessageHeader: '',
+  Topic: 'customer',
+  brokerAddress: 'kafka_1:9092',
+  KafkaConfigValueSeparator: '=',
+  KafkaConfig: 'request.timeout.ms=60001;session.timeout.ms=60000' ) 
+FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter',
+  formatterName: 'JSONFormatter',
   jsonMemberDelimiter: '\n',
+  jsonobjectdelimiter: '\n',
   EventsAsArrayOfJsonObjects: 'true' ) 
-INPUT FROM admin.PosDataStream;
+INPUT FROM admin.Kafka_Input_Topic_Customer;
 
 CREATE OR REPLACE CQ CQ_CUSTOMER_ORDER_ITEM INSERT INTO admin.Kafka_Input_Topic_CustomerOrderItem SELECT * FROM PosDataStream p WHERE META(p, "TableName").toString() == 'SCOTT.CUSTOMER_ORDER_ITEM';
 
@@ -117,7 +137,7 @@ KafkaConfigPropertySeparator: ';',
   adapterName: 'KafkaWriter',
   MessageHeader: '',
   Topic: 'customer_order_item',
-  brokerAddress: '35.225.220.10:9092',
+  brokerAddress: 'kafka_1:9092',
   KafkaConfigValueSeparator: '=',
   KafkaConfig: 'request.timeout.ms=60001;session.timeout.ms=60000' ) 
 FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter',
@@ -126,24 +146,6 @@ FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter'
   jsonobjectdelimiter: '\n',
   EventsAsArrayOfJsonObjects: 'true' ) 
 INPUT FROM admin.Kafka_Input_Topic_CustomerOrderItem;
-
-CREATE OR REPLACE CQ CQ_ADDRESS INSERT INTO admin.Kafka_Input_Topic_Address SELECT * FROM PosDataStream p WHERE META(p, "TableName").toString() == 'SCOTT.ADDRESS';
-
-CREATE OR REPLACE TARGET KafkaAddress USING Global.KafkaWriter VERSION '2.1.0' ( 
-KafkaConfigPropertySeparator: ';',
-  Mode: 'Sync',
-  adapterName: 'KafkaWriter',
-  MessageHeader: '',
-  Topic: 'address',
-  brokerAddress: '35.225.220.10:9092',
-  KafkaConfigValueSeparator: '=',
-  KafkaConfig: 'request.timeout.ms=60001;session.timeout.ms=60000' ) 
-FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter',
-  formatterName: 'JSONFormatter',
-  jsonMemberDelimiter: '\n',
-  jsonobjectdelimiter: '\n',
-  EventsAsArrayOfJsonObjects: 'true' ) 
-INPUT FROM admin.Kafka_Input_Topic_Address;
 
 END APPLICATION StriimToKafka;
 
