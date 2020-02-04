@@ -11,5 +11,3 @@ RUN  chown -R oracle:dba /u01/app/oracle/scripts && chmod a+rx /u01/app/oracle/s
 
 ENV ORACLE_PWD=tiger
 
-USER oracle
-
