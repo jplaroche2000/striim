@@ -22,14 +22,20 @@ docker exec -ti striim-3.7.4
 cd lib
 curl https://s3.amazonaws.com/jpl.s3bucket/ojdbc7.jar -o ojdbc7-12.1.0.2.jar
 
+docker restart striim-3.7.4
+
 adjust /etc/hosts:
-sudo vi /etc/hosts
+cat >> /etc/hosts
 34.95.11.111    kafka_1
 35.225.220.10   zoo1
 34.66.94.46     zoo2
 
 
-docker stack deploy --compose-file docker-compose.yml striim-oracle
+Start it
+
+
+cd /home/jplaroche_2017/git-projects/striim/docker
+docker-compose up -d
 
 
 
