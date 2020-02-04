@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.5"
 services:
   oracle-database:
     image: oracle/database:11.2.0.2-xe
