@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   oracle-database:
-    image: custom-oracle:latest
+    image: oracle/database:11.2.0.2-xe
     shm_size: 1g
     ports:
       - target: 1521
@@ -13,6 +13,8 @@ services:
         protocol: tcp
         mode: host
     volumes:
+      - /home/oracle/scripts/setup:/u01/app/oracle/scripts/setup
+      - /home/oracle/scripts/startup:/u01/app/oracle/scripts/startup
       - /home/oracle/oradata:/u01/app/oracle/oradata     
       - type: tmpfs
         target: /dev/shm
