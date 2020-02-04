@@ -2,6 +2,7 @@ version: "3.7"
 services:
   oracle-database:
     image: oracle/database:11.2.0.2-xe
+    shm_size: 1g
     ports:
       - target: 1521
         published: 1521
@@ -18,7 +19,7 @@ services:
       - type: tmpfs
         target: /dev/shm
         tmpfs:
-          size: 1024000000 # this means 1GB
+          size: 1073741824 # this means 1GB
     networks:
       - striim_oracle_net
     environment:
