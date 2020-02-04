@@ -19,7 +19,7 @@ services:
     networks:
       - striim_oracle_net
     environment:
-      ORACLE_PWD: tiger
+      ORACLE_PWD: "tiger"
   striim-3.7.4:
     image: striim/evalversion
     ports:
@@ -30,7 +30,7 @@ services:
     networks:
       - striim_oracle_net
     environment:
-      STRIIM_ACCEPT_EULA: Y
+      STRIIM_ACCEPT_EULA: "Y"
       
 networks:
   striim_oracle_net:
