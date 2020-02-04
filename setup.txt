@@ -31,7 +31,7 @@ cat >> /etc/hosts
 Start it - with docker-compose.yml (Not Swarm!)
 
 cd /home/jplaroche_2017/git-projects/striim/docker
-docker-compose up -d
+docker-compose -f docker-compose.yml.old up -d
 
 or (Swarm)
 
