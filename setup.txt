@@ -18,7 +18,9 @@ Striim
 docker run --name striim-3.7.4 -d -p 80:9080 -e "STRIIM_ACCEPT_EULA=Y"  striim/evalversion
 
 deploy jdb driver:
-docker exec -ti striim-3.7.4 cd lib; curl https://s3.amazonaws.com/jpl.s3bucket/ojdbc7.jar -o ojdbc7-12.1.0.2.jar
+docker exec -ti striim-3.7.4 
+cd lib
+curl https://s3.amazonaws.com/jpl.s3bucket/ojdbc7.jar -o ojdbc7-12.1.0.2.jar
 
 adjust /etc/hosts:
 sudo vi /etc/hosts
