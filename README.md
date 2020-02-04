@@ -44,4 +44,5 @@ Custom images must be used:
 - docker build -t custom-striim -f Dockerfile.striim .
 - docker build -t custom-oracle -f Dockerfile.oracle .
 
+Run stack:
 - docker stack deploy --compose-file docker-compose.yml striim_kafka
