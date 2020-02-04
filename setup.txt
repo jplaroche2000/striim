@@ -27,6 +27,7 @@ cat >> /etc/hosts
 35.225.220.10   zoo1
 34.66.94.46     zoo2
 
+echo "34.95.11.111    kafka_1" >> /etc/hosts; echo "35.225.220.10   zoo1" >> /etc/hosts; echo "34.66.94.46     zoo2" >> /etc/hosts
 
 Start it - with docker-compose.yml (Not Swarm!)
 

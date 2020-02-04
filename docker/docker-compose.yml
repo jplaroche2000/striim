@@ -32,7 +32,11 @@ services:
       - striim_oracle_net
     environment:
       STRIIM_ACCEPT_EULA: "Y"
-      
+    extra_hosts:
+    - "kafka_1:34.95.11.111"
+    - "zoo1:35.225.220.10"
+    - "zoo2:34.66.94.46"
+
 networks:
   striim_oracle_net:
     driver: overlay
