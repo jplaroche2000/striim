@@ -4,10 +4,7 @@ USER root
 
 # docker run --name oracle-database-11.2.0.2-xe --shm-size=1g -p 1521:1521 -p 8080:8080 -e ORACLE_PWD=tiger -v /home/oracle/scripts/setup:/u01/app/oracle/scripts/setup -v /home/oracle/scripts/startup:/u01/app/oracle/scripts/startup -v /home/oracle/oradata:/u01/app/oracle/oradata -d oracle/database:11.2.0.2-xe
 
-COPY oracle/scripts/setup/archive_log_mode.sql /u01/app/oracle/scripts/setup/archive_log_mode.sql
-COPY oracle/scripts/startup/create_user_and_schema.sql /u01/app/oracle/scripts/startup/create_user_and_schema.sql
+COPY striim/ojdbc7-12.1.0.2.jar /opt/striim/lib/ojdbc7-12.1.0.2.jar
 
-RUN  chown -R oracle:dba /u01/app/oracle/scripts && chmod a+rx /u01/app/oracle/scripts/setup/*.sql && chmod a+rx /u01/app/oracle/scripts/startup/*.sql
 
-ENV ORACLE_PWD=tiger
 
