@@ -1,6 +1,6 @@
 version: "3.2"
 services:
-  oracle-database-11.2.0.2-xe:
+  oracle-database:
     image: oracle/database:11.2.0.2-xe
     ports:
       - target: 1521
@@ -20,7 +20,7 @@ services:
       - striim_oracle_net
     environment:
       ORACLE_PWD: "tiger"
-  striim-3.7.4:
+  striim:
     image: striim/evalversion
     ports:
       - target: 9080
