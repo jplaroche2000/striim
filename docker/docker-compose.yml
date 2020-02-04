@@ -2,7 +2,6 @@ version: "3.7"
 services:
   oracle-database:
     image: custom-oracle:latest
-    shm_size: 1g
     ports:
       - target: 1521
         published: 1521
