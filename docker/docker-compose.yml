@@ -1,7 +1,8 @@
-version: "3.5"
+version: "3.7"
 services:
   oracle-database:
     image: oracle/database:11.2.0.2-xe
+    shm_size: 1g
     ports:
       - target: 1521
         published: 1521
@@ -11,7 +12,6 @@ services:
         published: 8080
         protocol: tcp
         mode: host
-    shm_size: 1g
     volumes:
       - /home/oracle/scripts/setup:/u01/app/oracle/scripts/setup
       - /home/oracle/scripts/startup:/u01/app/oracle/scripts/startup
