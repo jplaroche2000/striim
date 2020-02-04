@@ -22,7 +22,7 @@ services:
     environment:
       ORACLE_PWD: "tiger"
   striim:
-    image: striim/evalversion
+          image: custom-striim:latest
     ports:
       - target: 9080
         published: 80
