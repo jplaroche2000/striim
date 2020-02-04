@@ -3,8 +3,14 @@ services:
   oracle-database-11.2.0.2-xe:
     image: oracle/database:11.2.0.2-xe
     ports:
-      - "1521:1521"
-      - "8080:8080"
+      - target: 1521
+        published: 1521
+        protocol: tcp
+        mode: host
+      - target: 8080
+        published: 8080
+        protocol: tcp
+        mode: host
     shm_size: 1g
     volumes:
       - /home/oracle/scripts/setup:/u01/app/oracle/scripts/setup
@@ -17,12 +23,16 @@ services:
   striim-3.7.4:
     image: striim/evalversion
     ports:
-      - "80:9080"
+      - target: 9080
+        published: 80
+        protocol: tcp
+        mode: host
     networks:
       - striim_oracle_net
     environment:
-      STRIIM_ACCEPT_EULA: Y      
+      STRIIM_ACCEPT_EULA: Y
+      
 networks:
   striim_oracle_net:
-    external: true
+    driver: overlay
 
