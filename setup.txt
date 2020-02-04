@@ -1,7 +1,4 @@
 
-
-
-
 Run Oracle and Sriim Docker images
 ==================================
 
@@ -30,9 +27,7 @@ cat >> /etc/hosts
 35.225.220.10   zoo1
 34.66.94.46     zoo2
 
-
-Start it
-
+Start it - with docker-compose.yml (Not Swarm!)
 
 cd /home/jplaroche_2017/git-projects/striim/docker
 docker-compose up -d
