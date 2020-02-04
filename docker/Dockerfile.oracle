@@ -7,6 +7,8 @@ USER root
 COPY oracle/scripts/setup/archive_log_mode.sql /u01/app/oracle/scripts/setup/archive_log_mode.sql
 COPY oracle/scripts/startup/create_user_and_schema.sql /u01/app/oracle/scripts/startup/create_user_and_schema.sql
 
+RUN  chown -R oracle:dba /u01/app/oracle/scripts && chmod a+rx /u01/app/oracle/scripts/setup/*.sql && chmod a+rx /u01/app/oracle/scripts/startup/*.sql
+
 ENV ORACLE_PWD=tiger
 
 USER oracle
