@@ -5,6 +5,7 @@ USER root
 # docker run --name oracle-database-11.2.0.2-xe --shm-size=1g -p 1521:1521 -p 8080:8080 -e ORACLE_PWD=tiger -v /home/oracle/scripts/setup:/u01/app/oracle/scripts/setup -v /home/oracle/scripts/startup:/u01/app/oracle/scripts/startup -v /home/oracle/oradata:/u01/app/oracle/oradata -d oracle/database:11.2.0.2-xe
 
 COPY striim/ojdbc7-12.1.0.2.jar /opt/striim/lib/ojdbc7-12.1.0.2.jar
+COPY striim/superb-reporter-256719-bb4e161021e3.json /opt/striim/superb-reporter-256719-bb4e161021e3.json
 
 RUN  chown -R striim:striim /opt/striim/lib/ojdbc7-12.1.0.2.jar && chmod ug+rwx /opt/striim/lib/ojdbc7-12.1.0.2.jar
 

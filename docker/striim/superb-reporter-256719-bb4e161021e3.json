@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "superb-reporter-256719",
+  "private_key_id": "bb4e161021e38830b62bd2f31529d63f38c2cf27",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCarVlo66AVZuHr\nZbE1JtdfOg0U4AAlRfIMFW6h98QGKA+cvKqR0Qh7kifI0P0cxfVopedbsWyl0VBl\nip8gW696LrOWJjkpsWGkmr4U8Nk3DddKqbEzv+/jSuz0IoxSLfJoSIQrA/2XgG6O\nIGYOEsnCK2UZtOx556/eqdcO4Z4jKFFir5cpciAuHFai0tqBZjg7g+pVI9beU2zc\npts8Ym2p+BUXxVbjsLfy51Ycq3HfDk3hFxTPDEpw0+yUvr2zsTtUbvJYQN8uooD4\n89Gyv50UFKNcphIdrO++8vS5UJ5IltPXnFtjD1zV6H52erUxnOE0beU+kz/hwBpT\nxVbQYcZ1AgMBAAECggEAAcHTYLJAjM2w5lQu6awpyS6nJGQRDFtZjxKVQajHZMyC\ntOSdyW9G+eRkqE7beT60dX5g/PUsh0uz7ptfCGaSPUCXkK6ZeqRFuDF71FASH6J8\nHiCEX1KgXoQk4fccgfh8pvuf6L8wW869Mscical7+kU07lBUWWQs5somI8ijW8He\ndPuq+muSyC0Qk9qZ4QltekJZ/gDmCje3gVfGlamfd5DVWXzgXiGLiEdWD2PpWOHR\n/9iKH7x5r6wEuuEUguZP/+FamR0c2PV90P/TPfn2vSlq3uSFevrWSAmOFrLxkqCP\nCizhO4rWbpIdRXoPWdgGBT7gAaBjIx4eophy0v6Y1wKBgQDZKYoJDr19Bf0NbZOO\nCgVqvTe5v+vc9w/UJypnTvr5tipVIpsjHawNxEANBY4TND4D8Vuco+QaruhkujhA\nuyBOYrqv2SaLiatOzuXPxjUxn802/ewCmvQ3OvOyzYm2bLQ8Va5Fw8iQIEAwPAvj\npG1mASXc+jCNlaD+vU0jj1WxSwKBgQC2VwTm9eU5KeTqVP4O3m3dPxZKP/rtUA0w\n2B5u9nHlXA90iwIFWbviHomY9W08AkRhbvH7FR25w72o5hwaSqLXNwqTJECuDbmN\nHfibAfX46Ea5dXVVUBDUaTuPi3yKIlSFt/Fh/BffTyw6bN2ZXULIpaYpctewO4c1\neY6UEZ9PPwKBgQDXlOk3fK6YAu3n+rPU+hXOlPFRMTnRLmNEVW0/CaUVaMY1phkk\njzxSnlSHmNAmOGKoP16W7gxwgNqrxEI74Ih9yH1UPNqLA6xQnAyAa2A7V0y+Hu3A\n2FtAyQFMq8belqOGkfhjwazFh36xY6rZ3k3MSa9w4953b+dXfE2r04taaQKBgB4D\nFrB5OsB878vOL379B3JKJv4Tp9aVvYYTnHbBI6AP1g9lrfB5g55FTnqZsuAUs3Ki\nEzwzjo/78uSw82E0dbccvSXY6rh7U9YxX7EL0pOkj7eI6MYhBpQfugj3eYk2+1iD\nHTz2hGtiGbKIJrVOj2Z9NWtPFsdQFQItPtWKTQF7AoGBAIvvoy7ZQDtQ/YwdM7bd\nn3YJAffL8AjO7tABgs3AQld+DMZQhSMjLitK5naB9meu72qm7b4arq99SB/eQvL0\nrrY1I8CWT6FM7lipgt8ro5/XOePoTW32arESTnTbzF+iyo16qN7n/QIfiXvZdlna\nN2Z8hBp5gGrBaUxghL1N/RY3\n-----END PRIVATE KEY-----\n",
+  "client_email": "pub-sub-service-account@superb-reporter-256719.iam.gserviceaccount.com",
+  "client_id": "112037064399792287613",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pub-sub-service-account%40superb-reporter-256719.iam.gserviceaccount.com"
+}
