@@ -32,7 +32,6 @@ services:
       - striim_oracle_net
     environment:
       STRIIM_ACCEPT_EULA: "Y"
-      GOOGLE_APPLICATION_CREDENTIALS: "/opt/striim/superb-reporter-256719-bb4e161021e3.json"
     extra_hosts:
     - "kafka_1:34.95.11.111"
     - "zoo1:35.225.220.10"
