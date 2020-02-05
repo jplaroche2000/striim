@@ -5,7 +5,7 @@ Quick setup:
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
 This setup uses custom pre-built Docker images available on docker hub 
-(https://hub.docker.com/r/jplarochedocker).
+(https://hub.docker.com/r/jplarochedocker) and docker-compose.
 
 Prerequisites:
 - a running local Docker environment
