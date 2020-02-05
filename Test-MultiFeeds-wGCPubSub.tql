@@ -1,5 +1,5 @@
 
-CREATE APPLICATION StriimToKafka;
+CREATE APPLICATION StriimToKafkaWithGCP;
 
 CREATE OR REPLACE SOURCE oracle_database_11_2_0_2_xe USING OracleReader  ( 
 Compression: false,
@@ -161,5 +161,5 @@ FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter'
   EventsAsArrayOfJsonObjects: 'true' ) 
 INPUT FROM admin.Kafka_Input_Topic_Customer;
 
-END APPLICATION StriimToKafka;
+END APPLICATION StriimToKafkaWithGCP;
 

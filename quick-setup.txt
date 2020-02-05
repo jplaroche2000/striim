@@ -4,17 +4,20 @@ Quick setup:
 
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
-This setup uses pre-built Docker images available on docker hub (https://hub.docker.com/r/jplarochedocker).
+This setup uses custom pre-built Docker images available on docker hub 
+(https://hub.docker.com/r/jplarochedocker).
 
 Prerequisites:
-- a running Docker environment
-- a running Kafka environment
+- a running local Docker environment
+- a running local or remote Kafka environment
 
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
 1. On you docker dev machine:
 
-  $ cd git-projects/striim/docker
+  $ git clone https://github.com/jplaroche2000/striim.git
+
+  $ cd striim/docker
 
   *** THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092 ***
 
@@ -32,3 +35,26 @@ Prerequisites:
 3. To stop the Docker stack
 
   $ docker stack rm striim_kafka
+
+
+4. Access striim and add aplication
+
+   http://<Docker host public IP>
+   admin/admin
+   
+   In web console
+   APPS > + AddApp > Import Existing App
+   
+   Load tql fle located at root of git project:
+   striim/Test-MultiFeeds.tql
+   
+   Deploy App
+   
+   Start App
+   
+   
+   
+   
+   
+   
+   

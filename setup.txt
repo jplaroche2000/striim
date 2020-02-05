@@ -1,26 +1,74 @@
 
 Run Oracle and Striim Docker images
-==================================
+===================================
+
+--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
+
+This setup uses default vendor Docker images
+
+Prerequisites:
+- a running local Docker environment
+- a running local or remote Kafka environment
+
+--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
 Oracle
 ------
+
+a) Docker image source and build for Oracle Database - oracle/database:11.2.0.2-xe:
+
+git clone https://github.com/oracle/docker-images.git
+
+copy installation archive (oracle-xe-11.2.0-1.0.x86_64.rpm.zip) obtained form Oracle site (https://www.oracle.com/database/technologies/xe-prior-releases.html) under docker-images\OracleDatabase\SingleInstance\dockerfiles\11.2.0.2
+
+cd docker-images-oracle/OracleDatabase/SingleInstance/dockerfiles
+
+./buildDockerImage.sh -v 11.2.0.2 -x –i
+
+
+b) Prepare Docker host:
+
+create a local oracle user with uid 1000 and gid 1000 (assuming these uid and gid are not taken, if they are you will have to mofdify exsiting uid and gid of the other account and group - usermod/groupmod )
+
+sudo adduser oracle
+sudo  usermod -u 1000 oracle
+sudo  groupmod -g 1000 oracle
+
+
+create a local folder to mount to Docker for oracle data:
 
 sudo rm -rf /home/oracle/oradata
 sudo mkdir /home/oracle/oradata
 sudo chown oracle:oracle /home/oracle/oradata
 sudo chmod a+rwx /home/oracle/oradata
 
-Direct run:
+
+copy custom scripts for schema and data and Striim CDC
+
+git clone https://github.com/jplaroche2000/striim.git
+
+sudo mkdir /home/oracle/scripts/setup
+cp ./striim/docker/oracle/scripts/setup/*.sql /home/oracle/scripts/setup
+chmod a+rx /home/oracle/scripts/setup/*.sql
+sudo mkdir /home/oracle/scripts/startup
+cp ./striim/docker/oracle/scripts/startup/*.sql /home/oracle/scripts/startup
+chmod a+rx /home/oracle/scripts/startup/*.sql
+sudo chown -R oracle:oracle  /home/oracle/scripts
+
+run the container:
 docker run --name oracle-database-11.2.0.2-xe --shm-size=1g -p 1521:1521 -p 8080:8080 -e ORACLE_PWD=tiger -v /home/oracle/scripts/setup:/u01/app/oracle/scripts/setup -v /home/oracle/scripts/startup:/u01/app/oracle/scripts/startup -v /home/oracle/oradata:/u01/app/oracle/oradata -d oracle/database:11.2.0.2-xe
+
+connect to database:
+docker exec -ti oracle-database-11.2.0.2-xe sqlplus sys/tiger@//localhost:1521/XE as sysdba
 
 
 Striim
 ------
 
-Direct run:
+run the container:
 docker run --name striim-3.7.4 -d -p 80:9080 -e "STRIIM_ACCEPT_EULA=Y"  striim/evalversion
 
-deploy jdb driver:
+deploy jdbc driver:
 docker exec -ti striim-3.7.4 
 cd lib
 curl https://s3.amazonaws.com/jpl.s3bucket/ojdbc7.jar -o ojdbc7-12.1.0.2.jar
@@ -29,19 +77,29 @@ docker restart striim-3.7.4
 
 adjust /etc/hosts:
 cat >> /etc/hosts
-34.95.11.111    kafka_1
-35.225.220.10   zoo1
-34.66.94.46     zoo2
+34.95.11.111    zoo1
 
 
-Swarm:
-------
+Access striim and add aplication:
+
+http://<Docker host public IP>
+admin/admin
+
+In web console
+APPS > + AddApp > Import Existing App
+
+Load tql fle located at root of git project:
+striim/Test-MultiFeeds.tql
+
+Deploy App
+
+Start App
+
+
+Alternative: Running with docker-compose:
+-----------------------------------------
 
 Custom images must be used:
-
-cd ~/git-projects/striim/docker
-docker build -t custom-striim -f Dockerfile.striim .
-docker build -t custom-oracle -f Dockerfile.oracle .
 
 docker stack deploy --compose-file docker-compose.yml striim_kafka
 
