@@ -1,7 +1,7 @@
 import base64
 import json
 
-def pubsub_customer_firestore(event, context):
+def pubsub_multiplexor(event, context):
     """Triggered from a message on a Cloud Pub/Sub topic.
     Args:
          event (dict): Event payload.
