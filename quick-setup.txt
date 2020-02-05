@@ -20,8 +20,15 @@ Prerequisites:
 
   edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka host.
 
+  Ex.:  
+    extra_hosts:
+    - "zoo1:34.95.11.111"  
 
-2. Start Docker stack
+2. Start the Docker stack
 
   $ docker stack deploy --compose-file docker-compose.yml striim_kafka
 
+
+3. To stop the Docker stack
+
+  $ docker stack rm striim_kafka
