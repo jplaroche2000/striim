@@ -41,6 +41,20 @@ FORMAT USING Global.JSONFormatter  ( jsonobjectdelimiter: '\n',
   EventsAsArrayOfJsonObjects: 'true' ) 
 INPUT FROM admin.PosDataStream;
 
+CREATE OR REPLACE TARGET GCPPubSub USING Global.GooglePubSubWriter  ( 
+PubSubConfig: 'RetryDelay:5,MaxRetryDelay:600,TotalTimeout:10,InitialRpcTimeout:10,MaxRpcTimeout:10,RetryDelayMultiplier:2.0,NumThreads:10,MaxOutstandingElementCount:1000,MaxOutstandingRequestBytes:1000000',
+  BatchPolicy: 'EventCount:1000,Interval:1m,Size:1000000',
+  ProjectId: 'superb-reporter-256719',
+  adapterName: 'GooglePubSubWriter',
+  Topic: 'test',
+  ServiceAccountKey: '/opt/striim/superb-reporter-256719-8b0fcb2c76ea.json' ) 
+FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter',
+  formatterName: 'JSONFormatter',
+  jsonMemberDelimiter: '\n',
+  jsonobjectdelimiter: '\n',
+  EventsAsArrayOfJsonObjects: 'true' ) 
+INPUT FROM admin.PosDataStream;
+
 CREATE OR REPLACE TARGET KafkaBucket USING Global.KafkaWriter VERSION '2.1.0' ( 
 KafkaConfigPropertySeparator: ';',
   Mode: 'Sync',
