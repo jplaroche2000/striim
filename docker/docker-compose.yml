@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   oracle-database:
-    image: custom-oracle:latest
+    image: jplarochedocker/custom-oracle:latest
     ports:
       - target: 1521
         published: 1521
@@ -22,7 +22,7 @@ services:
     environment:
       ORACLE_PWD: "tiger"
   striim:
-    image: custom-striim:latest
+    image: jplarochedocker/custom-striim:latest
     ports:
       - target: 9080
         published: 80
