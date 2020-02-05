@@ -12,7 +12,6 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - /home/oracle/oradata:/u01/app/oracle/oradata     
       - type: tmpfs
         target: /dev/shm
         tmpfs:
