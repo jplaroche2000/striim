@@ -12,7 +12,7 @@ USER root
 COPY striim/ojdbc7-12.1.0.2.jar /opt/striim/lib/ojdbc7-12.1.0.2.jar
 
 # YOU MUST put YOUR GCP KEY under striim sub-folder and reference it here!
-COPY striim/superb-reporter-256719-8b0fcb2c76ea.json /opt/striim/superb-reporter-256719-8b0fcb2c76ea.json
+COPY striim/*.json /opt/striim/
 
 RUN  chown -R striim:striim /opt/striim/lib/ojdbc7-12.1.0.2.jar && chmod ug+rwx /opt/striim/lib/ojdbc7-12.1.0.2.jar
 
