@@ -1,8 +1,14 @@
+#
+# This image builds a custom Oracle database 11.2.0.2-xe image
+# with built-in setup (enable arhcive mode) and startup (SCOTT schema with supplemental logging) scripts
+#
 FROM oracle/database:11.2.0.2-xe
+
+MAINTAINER Jean-Philippe Laroche <jplaroche_2000@yahoo.ca>
 
 USER root
 
-# docker run --name oracle-database-11.2.0.2-xe --shm-size=1g -p 1521:1521 -p 8080:8080 -e ORACLE_PWD=tiger -v /home/oracle/scripts/setup:/u01/app/oracle/scripts/setup -v /home/oracle/scripts/startup:/u01/app/oracle/scripts/startup -v /home/oracle/oradata:/u01/app/oracle/oradata -d oracle/database:11.2.0.2-xe
+# docker run --name oracle-database-11.2.0.2-xe --shm-size=1g -p 1521:1521 -p 8080:8080 -e ORACLE_PWD=tiger -d oracle/database:11.2.0.2-xe
 
 COPY oracle/scripts/setup/archive_log_mode.sql /u01/app/oracle/scripts/setup/archive_log_mode.sql
 COPY oracle/scripts/startup/create_user_and_schema.sql /u01/app/oracle/scripts/startup/create_user_and_schema.sql
