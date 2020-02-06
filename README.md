@@ -1,6 +1,60 @@
-# Oracle database / Striim / Kafka data flow
+
+Quick setup:
+------------
+
+--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
+
+This setup uses custom pre-built Docker images available on docker hub 
+(https://hub.docker.com/r/jplarochedocker) and docker-compose.
+
+Prerequisites:
+- a running local Docker environment
+- a running local or remote Kafka environment
+
+--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
+
+1. On you docker dev machine:
+
+  $ git clone https://github.com/jplaroche2000/striim.git
+
+  $ cd striim/docker
+
+  *** THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092 ***
+
+  edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka host.
+
+  Ex.:  
+    extra_hosts:
+    - "zoo1:34.95.11.111"  
+
+2. Start the Docker stack
+
+  $ docker stack deploy --compose-file docker-compose.yml striim_kafka
 
 
-For quick setup: quick-setup.txt
+3. To stop the Docker stack
 
-For detailed step by step: setup.txt
+  $ docker stack rm striim_kafka
+
+
+4. Access striim and add aplication
+
+   http://<Docker host public IP>
+   admin/admin
+   
+   In web console
+   APPS > + AddApp > Import Existing App
+   
+   Load tql fle located at root of git project:
+   striim/Test-MultiFeeds.tql
+   
+   Deploy App
+   
+   Start App
+   
+   
+   
+   
+   
+   
+   
