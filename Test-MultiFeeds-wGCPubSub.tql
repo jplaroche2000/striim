@@ -25,8 +25,8 @@ Compression: false,
   Username: 'scott',
   TransactionBufferSpilloverSize: '1MB',
   OutboundServerProcessName: 'WebActionXStream',
-  Password: 'n+veJPdOf3pDgZThKyJ54g==',
-  Password_encrypted: 'true' ) 
+  Password: 'tiger',
+  Password_encrypted: 'false' ) 
 OUTPUT TO PosDataStream  ;
 
 CREATE OR REPLACE TARGET GCPPubSub USING Global.GooglePubSubWriter  ( 
