@@ -12,7 +12,7 @@ def add_customer(client, id, name, lastName):
     new_customer = datastore.Entity(key, exclude_from_indexes=['LAST_UPDATE'])
 
     new_customer.update({
-        'ID': id
+        'ID': id,
         'NAME': name,
         'LAST_NAME': lastName,
         'LAST_UPDATE': datetime.datetime.utcnow(),
