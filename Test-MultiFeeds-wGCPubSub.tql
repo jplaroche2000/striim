@@ -34,7 +34,7 @@ PubSubConfig: 'RetryDelay:5,MaxRetryDelay:600,TotalTimeout:10,InitialRpcTimeout:
   BatchPolicy: 'EventCount:1000,Interval:1m,Size:1000000',
   ProjectId: 'telus-project-001',
   adapterName: 'GooglePubSubWriter',
-  Topic: 'customer',
+  Topic: 'striim_customer',
   ServiceAccountKey: '/opt/striim/telus-project-001-90268a282a08.json' ) 
 FORMAT USING Global.JSONFormatter  ( handler: 'com.webaction.proc.JSONFormatter',
   formatterName: 'JSONFormatter',
