@@ -1,5 +1,27 @@
 import base64
 import json
+from google.cloud import datastore
+
+def create_client(project_id):
+    return datastore.Client(project_id)
+
+def add_customer(client, id, name, lastName):
+    key = client.key('Customer')
+
+    new_customer = datastore.Entity(key, exclude_from_indexes=['LAST_UPDATE'])
+
+    new_customer.update({
+        'ID': id
+        'NAME': name,
+        'LAST_NAME': lastName,
+        'LAST_UPDATE': datetime.datetime.utcnow(),
+    })
+
+    client.put(new_customer)
+
+    return new_customer.key
+    
+    
 
 def pubsub_multiplexor(event, context):
 
@@ -21,11 +43,14 @@ def pubsub_multiplexor(event, context):
     
     domain_object = json_object['data']
     print(domain_object)
+    
+    datastore_client = create_client('telus-project-001');
 
     if table_name == 'SCOTT.CUSTOMER':    
         print(domain_object['ID'])
         print(domain_object['NAME'])
         print(domain_object['LAST_NAME'])
+        add_customer(datastore_client, domain_object['ID'], domain_object['NAME'], domain_object['LAST_NAME'])
 
     elif table_name == 'SCOTT.ADDRESS':
         print(domain_object['ID'])
