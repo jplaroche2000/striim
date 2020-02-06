@@ -13,7 +13,7 @@ Prerequisites:
 
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
-1. On you docker dev machine:
+1. On your docker dev machine:
 
   $ git clone https://github.com/jplaroche2000/striim.git
 
