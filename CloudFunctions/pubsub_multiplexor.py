@@ -90,7 +90,7 @@ def add_customer(db_client, id, name, lastName):
         'LAST_UPDATE': datetime.datetime.utcnow()
     })
 
-    client.put(new_customer)
+    db_client.put(new_customer)
 
     return new_customer.key
 
@@ -115,7 +115,7 @@ def add_address(db_client, id, street_number, street, city):
         'CITY': city
     })
 
-    client.put(new_address)
+    db_client.put(new_address)
 
     return new_address.key
     
@@ -138,7 +138,7 @@ def add_address_link(db_client, id, address_id, customer_id):
         'CUSTOMER_ID': customer_id
     })
 
-    client.put(new_address_link)
+    db_client.put(new_address_link)
 
     return new_address_link.key
 
@@ -154,7 +154,7 @@ def add_customer_order(db_client, id, orderDate, customerId, total):
         'TOTAL': total
     })
 
-    client.put(new_customer_order)
+    db_client.put(new_customer_order)
 
     return new_customer_order.key
 
@@ -173,6 +173,6 @@ def add_customer_order_item(db_client, id, customer_oder_id, description, quanti
         'PRICE': price
     })
 
-    client.put(new_customer_order_item)
+    db_client.put(new_customer_order_item)
 
     return new_customer_order_item.key
