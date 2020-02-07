@@ -108,7 +108,7 @@ def pubsub_multiplexor(event, context):
         
             query = datastore_client.query(kind='CustomerOrderItem')
             query.add_filter('ID', '=', domain_object['ID'])
-            query.add_filter('ORDER_ID', '=', domain_object['ORDER_ID'])
+            query.add_filter('CUSTOMER_ORDER_ID', '=', domain_object['CUSTOMER_ORDER_ID'])
             query_iter = query.fetch()
             for entity in query_iter:
                 datastore_client.delete(entity.key)
