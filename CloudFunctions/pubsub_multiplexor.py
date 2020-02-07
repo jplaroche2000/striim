@@ -43,6 +43,7 @@ def pubsub_multiplexor(event, context):
             add_customer(datastore_client, domain_object['ID'], domain_object['NAME'], domain_object['LAST_NAME'])
 
         elif table_name == 'SCOTT.ADDRESS':
+        
             print(domain_object['ID'])
             print(domain_object['STREET_NUMBER'])
             print(domain_object['STREET'])    
@@ -121,34 +122,54 @@ def pubsub_multiplexor(event, context):
         print('Updating entity in Firestore database...')
 
         if table_name == 'SCOTT.CUSTOMER':    
-            print(domain_object['ID'])
-            print(domain_object['NAME'])
-            print(domain_object['LAST_NAME'])
+           
+            query = datastore_client.query(kind='Customer')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                print(entity)
 
         elif table_name == 'SCOTT.ADDRESS':
-            print(domain_object['ID'])
-            print(domain_object['STREET_NUMBER'])
-            print(domain_object['STREET'])    
-            print(domain_object['CITY'])    
+                        
+            query = datastore_client.query(kind='Address')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                if 'ID' in domain_object:
+                    entity['ID'] = domain_object['ID']
+                if 'STREET_NUMBER' in domain_object:
+                    entity['STREET_NUMBER'] = domain_object['STREET_NUMBER']
+                if 'STREET' in domain_object:
+                    entity['STREET'] = domain_object['STREET']                    
+                if 'CITY' in domain_object:
+                    entity['CITY'] = domain_object['CITY']  
+                datastore_client.put(entity)
 
         elif table_name == 'SCOTT.ADDRESS_LINK':
-            print(domain_object['ID'])
-            print(domain_object['ADDRESS_ID'])
-            print(domain_object['CUSTOMER_ID'])     
+            
+            query = datastore_client.query(kind='AddressLink')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                print(entity)
 
         elif table_name == 'SCOTT.CUSTOMER_ORDER':
-            print(domain_object['ID'])
-            print(domain_object['ORDER_DATE'])
-            print(domain_object['CUSTOMER_ID'])     
-            print(domain_object['TOTAL'])     
+        
+            query = datastore_client.query(kind='CustomerOrder')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                print(entity)
 
         else:
-            print(domain_object['ID'])
-            print(domain_object['CUSTOMER_ORDER_ID'])
-            print(domain_object['DESCRIPTION'])     
-            print(domain_object['QUANTITY'])     
-            print(domain_object['PRICE'])   
-
+        
+            query = datastore_client.query(kind='CustomerOrderItem')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query.add_filter('CUSTOMER_ORDER_ID', '=', domain_object['CUSTOMER_ORDER_ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                print(entity)
+                
     else:
     
         print('Operation Not Supported!')
