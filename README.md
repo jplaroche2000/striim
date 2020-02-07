@@ -23,7 +23,7 @@ Prerequisites:
     cd striim/docker
     ```
 
-    *** THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092 ***
+    ** THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092 **
  
     edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka host.
 
