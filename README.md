@@ -28,8 +28,8 @@ Prerequisites:
     edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka host.
 
     Ex.:  
-    *extra_hosts:
-        - "zoo1:34.95.11.111"  
+    * extra_hosts:
+      * - "zoo1:34.95.11.111"  
 
 2. Start the Docker stack
 
