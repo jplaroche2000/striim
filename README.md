@@ -22,22 +22,28 @@ Prerequisites:
 ```sh
     cd striim/docker
 ```
-  *** THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092 ***
 
-  edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka host.
+*** THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092 ***
 
-  Ex.:  
-    extra_hosts:
-    - "zoo1:34.95.11.111"  
+edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka host.
+
+Ex.:  
+extra_hosts:
+- "zoo1:34.95.11.111"  
 
 2. Start the Docker stack
 
-  $ docker stack deploy --compose-file docker-compose.yml striim_kafka
+```sh
+    docker stack deploy --compose-file docker-compose.yml striim_kafka
+```
 
 
 3. To stop the Docker stack
 
-  $ docker stack rm striim_kafka
+
+```sh
+    docker stack rm striim_kafka
+```
 
 
 4. Access striim and add aplication
