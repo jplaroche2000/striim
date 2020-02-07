@@ -127,7 +127,13 @@ def pubsub_multiplexor(event, context):
             query.add_filter('ID', '=', domain_object['ID'])
             query_iter = query.fetch()
             for entity in query_iter:
-                print(entity)
+                if 'ID' in domain_object:
+                    entity['ID'] = domain_object['ID']
+                if 'NAME' in domain_object:
+                    entity['NAME'] = domain_object['NAME']
+                if 'LAST_NAME' in domain_object:
+                    entity['LAST_NAME'] = domain_object['LAST_NAME']                    
+                datastore_client.put(entity)
 
         elif table_name == 'SCOTT.ADDRESS':
                         
@@ -151,7 +157,13 @@ def pubsub_multiplexor(event, context):
             query.add_filter('ID', '=', domain_object['ID'])
             query_iter = query.fetch()
             for entity in query_iter:
-                print(entity)
+                if 'ID' in domain_object:
+                    entity['ID'] = domain_object['ID']
+                if 'ADDRESS_ID' in domain_object:
+                    entity['ADDRESS_ID'] = domain_object['ADDRESS_ID']                 
+                if 'CUSTOMER_ID' in domain_object:
+                    entity['CUSTOMER_ID'] = domain_object['CUSTOMER_ID']  
+                datastore_client.put(entity)
 
         elif table_name == 'SCOTT.CUSTOMER_ORDER':
         
@@ -159,7 +171,15 @@ def pubsub_multiplexor(event, context):
             query.add_filter('ID', '=', domain_object['ID'])
             query_iter = query.fetch()
             for entity in query_iter:
-                print(entity)
+                if 'ID' in domain_object:
+                    entity['ID'] = domain_object['ID']
+                if 'ORDER_DATE' in domain_object:
+                    entity['ORDER_DATE'] = domain_object['ORDER_DATE']
+                if 'CUSTOMER_ID' in domain_object:
+                    entity['CUSTOMER_ID'] = domain_object['CUSTOMER_ID']                    
+                if 'TOTAL' in domain_object:
+                    entity['TOTAL'] = domain_object['TOTAL']  
+                datastore_client.put(entity)
 
         else:
         
@@ -168,7 +188,17 @@ def pubsub_multiplexor(event, context):
             query.add_filter('CUSTOMER_ORDER_ID', '=', domain_object['CUSTOMER_ORDER_ID'])
             query_iter = query.fetch()
             for entity in query_iter:
-                print(entity)
+                if 'ID' in domain_object:
+                    entity['ID'] = domain_object['ID']
+                if 'CUSTOMER_ORDER_ID' in domain_object:
+                    entity['CUSTOMER_ORDER_ID'] = domain_object['CUSTOMER_ORDER_ID']
+                if 'DESCRIPTION' in domain_object:
+                    entity['DESCRIPTION'] = domain_object['DESCRIPTION']                    
+                if 'QUANTITY' in domain_object:
+                    entity['QUANTITY'] = domain_object['QUANTITY']  
+                if 'PRICE' in domain_object:
+                    entity['PRICE'] = domain_object['PRICE']  
+                    datastore_client.put(entity)
                 
     else:
     
