@@ -46,7 +46,7 @@ Prerequisites:
     docker stack rm striim_kafka
     ```
 
-4. Access striim and add aplication
+4. Access striim and add application
 
    http://<Docker host public IP>
    admin/admin
@@ -61,8 +61,11 @@ Prerequisites:
    
    Start App
    
-   
-   
+ 5. Access database and modify records to see changes replicated to Kafka topics
+ 
+   ```sh
+   sqlplus scott/tiger@//<Public IP of oracle container>:1521/XE
+   ```
    
    
    
