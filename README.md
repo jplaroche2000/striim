@@ -23,9 +23,7 @@ Prerequisites:
     cd striim/docker
     ```
 
-    **THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092**
- 
-    edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka host.
+    then edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka host.
 
     Ex.:  
     
@@ -33,6 +31,9 @@ Prerequisites:
       
       `-` "zoo1:34.95.11.111"  
 
+    **THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092**
+ 
+ 
 2. Start the Docker stack
 
     ```sh
