@@ -40,12 +40,6 @@ def pubsub_multiplexor(event, context):
             print(domain_object['ID'])
             print(domain_object['NAME'])
             print(domain_object['LAST_NAME'])
-            
-	    query = datastore_client.query(kind='Customer')
-	    query.add_filter('ID', '=', domain_object['ID'])
-	    query_iter = query.fetch()
-	    
-            
             add_customer(datastore_client, domain_object['ID'], domain_object['NAME'], domain_object['LAST_NAME'])
 
         elif table_name == 'SCOTT.ADDRESS':
@@ -78,8 +72,47 @@ def pubsub_multiplexor(event, context):
 
     elif operation_name == 'DELETE':
     
-        print('To be implemented...')
-    
+        if table_name == 'SCOTT.CUSTOMER':    
+           
+            query = datastore_client.query(kind='Customer')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                datastore_client.delete(entity.key)
+
+        elif table_name == 'SCOTT.ADDRESS':
+            
+            query = datastore_client.query(kind='Address')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                datastore_client.delete(entity.key)
+
+        elif table_name == 'SCOTT.ADDRESS_LINK':
+            
+            query = datastore_client.query(kind='AddressLink')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                datastore_client.delete(entity.key)
+
+        elif table_name == 'SCOTT.CUSTOMER_ORDER':
+        
+            query = datastore_client.query(kind='CustomerOrder')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                datastore_client.delete(entity.key)
+
+        else:
+        
+            query = datastore_client.query(kind='CustomerOrderItem')
+            query.add_filter('ID', '=', domain_object['ID'])
+            query.add_filter('ORDER_ID', '=', domain_object['ORDER_ID'])
+            query_iter = query.fetch()
+            for entity in query_iter:
+                datastore_client.delete(entity.key)
+
     else:
     
         print('To be implemented...')
