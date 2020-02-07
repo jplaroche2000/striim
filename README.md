@@ -48,13 +48,16 @@ Prerequisites:
 
 4. Access striim and add application
 
-    http://<Docker host public IP>
+    http://`<`Docker host public IP`>`
+    
     admin/admin
    
-    In web console
+    In web console:
+    
     APPS > + AddApp > Import Existing App
    
     Load tql fle located at root of git project:
+    
     striim/Test-MultiFeeds.tql
    
     Deploy App
