@@ -40,13 +40,8 @@ Prerequisites:
     docker stack deploy --compose-file docker-compose.yml striim_kafka
     ```
 
-3. To stop the Docker stack
 
-    ```sh
-    docker stack rm striim_kafka
-    ```
-
-4. Access striim and add application
+3. Access striim and add application
 
     http://`<`Docker host public IP`>`
     
@@ -64,12 +59,16 @@ Prerequisites:
    
     Start App
    
- 5. Access database and modify records to see changes replicated to Kafka topics
+4. Access database and modify records to see changes replicated to Kafka topics
  
     ```sh
     sqlplus scott/tiger@//<Public IP of oracle container>:1521/XE
     ```
    
-   
+5. To stop the Docker stack
+
+    ```sh
+    docker stack rm striim_kafka
+    ```  
    
    

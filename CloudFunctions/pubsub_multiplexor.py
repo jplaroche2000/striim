@@ -72,7 +72,7 @@ def pubsub_multiplexor(event, context):
 
     elif operation_name == 'DELETE':
  
-         print('Deleting entity from Firestore database...')
+        print('Deleting entity from Firestore database...')
 
         if table_name == 'SCOTT.CUSTOMER':    
            
