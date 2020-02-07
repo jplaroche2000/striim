@@ -9,6 +9,12 @@ def pubsub_multiplexor(event, context):
     Args:
          event (dict): Event payload.
          context (google.cloud.functions.Context): Metadata for the event.
+         
+         This method will create a JSON entity based on a Striim message 
+         received from a Pub/Sub topic and execute CRUD operation on a 
+         Firestore database.
+         
+         https://cloud.google.com/datastore/docs/datastore-api-tutorial
     """
     
     pubsub_message = base64.b64decode(event['data']).decode('utf-8')
@@ -34,6 +40,12 @@ def pubsub_multiplexor(event, context):
             print(domain_object['ID'])
             print(domain_object['NAME'])
             print(domain_object['LAST_NAME'])
+            
+	    query = datastore_client.query(kind='Customer')
+	    query.add_filter('ID', '=', domain_object['ID'])
+	    query_iter = query.fetch()
+	    
+            
             add_customer(datastore_client, domain_object['ID'], domain_object['NAME'], domain_object['LAST_NAME'])
 
         elif table_name == 'SCOTT.ADDRESS':
@@ -77,6 +89,7 @@ def create_client(project_id):
     """Create database client.
     Args:
          GCP project id where firestore was create
+         API - https://googleapis.dev/python/datastore/latest/client.html
     """
     return datastore.Client(project_id)
 
