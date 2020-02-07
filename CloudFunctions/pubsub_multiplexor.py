@@ -28,6 +28,8 @@ def pubsub_multiplexor(event, context):
 
     if operation_name == 'INSERT':
 
+        print('Inserting data into Firestore database...')
+
         if table_name == 'SCOTT.CUSTOMER':    
             print(domain_object['ID'])
             print(domain_object['NAME'])
@@ -62,6 +64,14 @@ def pubsub_multiplexor(event, context):
             print(domain_object['PRICE'])   
             add_customer_order_item(datastore_client, domain_object['ID'],domain_object['CUSTOMER_ORDER_ID'],domain_object['DESCRIPTION'],domain_object['QUANTITY'],domain_object['PRICE'])
 
+    elif operation_name == 'DELETE':
+    
+        print('To be implemented...')
+    
+    else:
+    
+        print('To be implemented...')
+        
 
 def create_client(project_id):
     """Create database client.
