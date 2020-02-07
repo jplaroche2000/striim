@@ -48,24 +48,24 @@ Prerequisites:
 
 4. Access striim and add application
 
-   http://<Docker host public IP>
-   admin/admin
+    http://<Docker host public IP>
+    admin/admin
    
-   In web console
-   APPS > + AddApp > Import Existing App
+    In web console
+    APPS > + AddApp > Import Existing App
    
-   Load tql fle located at root of git project:
-   striim/Test-MultiFeeds.tql
+    Load tql fle located at root of git project:
+    striim/Test-MultiFeeds.tql
    
-   Deploy App
+    Deploy App
    
-   Start App
+    Start App
    
  5. Access database and modify records to see changes replicated to Kafka topics
  
-   ```sh
-   sqlplus scott/tiger@//<Public IP of oracle container>:1521/XE
-   ```
+    ```sh
+    sqlplus scott/tiger@//<Public IP of oracle container>:1521/XE
+    ```
    
    
    
