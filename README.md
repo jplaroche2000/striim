@@ -31,7 +31,7 @@ Prerequisites:
     
     extra_hosts:
       
-      - "zoo1:34.95.11.111"  
+      `-` "zoo1:34.95.11.111"  
 
 2. Start the Docker stack
 
