@@ -15,9 +15,9 @@ Prerequisites:
 
 1. On your docker dev machine:
 
-  $ git clone https://github.com/jplaroche2000/striim.git
+    git clone https://github.com/jplaroche2000/striim.git
 
-  $ cd striim/docker
+    cd striim/docker
 
   *** THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092 ***
 
