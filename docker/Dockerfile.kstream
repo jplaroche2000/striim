@@ -9,11 +9,8 @@ MAINTAINER Jean-Philippe Laroche <jplaroche_2000@yahoo.ca>
 
 USER root
 
-COPY java/lib/gcp.poc-0.0.1-SNAPSHOT.jar /u01/oracle
-COPY java/lib/gcp.poc-0.0.1-SNAPSHOT.jar /u01/oracle
-COPY java/lib/gcp.poc-0.0.1-SNAPSHOT.jar /u01/oracle
-
-COPY java/start-streaming.sh /u01/oracle/start-streaming.sh
+COPY java/gcp.poc-exec.jar /u01/oracle/gcp.poc-exec.jar
+COPY java/start-kstream.sh /u01/oracle/start-streaming.sh
 
 # YOU MUST put YOUR GCP KEY under /u01/oracle and reference it here for datastore service account!
 COPY java/*.json /u01/oracle
@@ -21,5 +18,10 @@ COPY java/*.json /u01/oracle
 RUN  chown -R oracle:oracle /u01/oracle/*.jar && chmod ug+rwx u01/oracle/*.jar && chown -R oracle:oracle /u01/oracle/*.json && chmod ug+rw u01/oracle/*.json && chown -R oracle:oracle /u01/oracle/*.sh && chmod ug+rwx u01/oracle/*.sh
 
 USER oracle
+
+WORKDIR /u01/oracle
+
+ENTRYPOINT ["./start-streaming.sh"]
+
 
 
