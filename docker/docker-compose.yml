@@ -34,7 +34,8 @@ services:
     environment:
       STRIIM_ACCEPT_EULA: "Y"
     extra_hosts:
-    - "zoo1:34.95.11.111"
+    - "zoo1:35.231.91.190"
+    - "zoo2:34.74.139.149"
 
   java-kstream:
     image: jplarochedocker/custom-kstream:latest
@@ -43,8 +44,8 @@ services:
     environment:
       GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/telus-project-001-7a785be0cc40.json"
     extra_hosts:
-    - "zoo1:34.95.11.111"
-
+    - "zoo1:35.231.91.190"
+    - "zoo2:34.74.139.149"
 
 networks:
   striim_oracle_net:
