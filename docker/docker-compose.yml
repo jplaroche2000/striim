@@ -1,5 +1,6 @@
 version: "3.7"
 services:
+
   oracle-database:
     image: jplarochedocker/custom-oracle:latest
     ports:
@@ -20,6 +21,7 @@ services:
       - striim_oracle_net
     environment:
       ORACLE_PWD: "tiger"
+
   striim:
     image: jplarochedocker/custom-striim:latest
     ports:
@@ -33,6 +35,16 @@ services:
       STRIIM_ACCEPT_EULA: "Y"
     extra_hosts:
     - "zoo1:34.95.11.111"
+
+  java-kstream:
+    image: jplarochedocker/custom-kstream:latest
+    networks:
+      - striim_oracle_net
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/telus-project-001-7a785be0cc40.json"
+    extra_hosts:
+    - "zoo1:34.95.11.111"
+
 
 networks:
   striim_oracle_net:

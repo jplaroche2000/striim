@@ -1,0 +1,25 @@
+#
+# This image builds a custom Striim image
+# with oracle jdb driver and GCP service account key for Pub Sub access (change to reflect your own key and GCP project)
+# - https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+#
+FROM oracle/serverjre:8
+
+MAINTAINER Jean-Philippe Laroche <jplaroche_2000@yahoo.ca>
+
+USER root
+
+COPY java/lib/gcp.poc-0.0.1-SNAPSHOT.jar /u01/oracle
+COPY java/lib/gcp.poc-0.0.1-SNAPSHOT.jar /u01/oracle
+COPY java/lib/gcp.poc-0.0.1-SNAPSHOT.jar /u01/oracle
+
+COPY java/start-streaming.sh /u01/oracle/start-streaming.sh
+
+# YOU MUST put YOUR GCP KEY under /u01/oracle and reference it here for datastore service account!
+COPY java/*.json /u01/oracle
+
+RUN  chown -R oracle:oracle /u01/oracle/*.jar && chmod ug+rwx u01/oracle/*.jar && chown -R oracle:oracle /u01/oracle/*.json && chmod ug+rw u01/oracle/*.json && chown -R oracle:oracle /u01/oracle/*.sh && chmod ug+rwx u01/oracle/*.sh
+
+USER oracle
+
+
