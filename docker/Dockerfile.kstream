@@ -1,6 +1,6 @@
 #
-# This image builds a custom Striim image
-# with oracle jdb driver and GCP service account key for Pub Sub access (change to reflect your own key and GCP project)
+# This image builds a custom Java Kafka stream application image
+# with a GCP service account key for Datastore access (change to reflect your own key and GCP project)
 # - https://cloud.google.com/iam/docs/creating-managing-service-account-keys
 #
 FROM oracle/serverjre:8
