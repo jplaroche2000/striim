@@ -95,7 +95,7 @@ public class AddressEntity extends FirestoreEntity {
 			    .set("STREET_NUMBER", number)
 			    .set("CITY", city)
 			    .build();
-		
+
 		return customerEntity;
 	}
 

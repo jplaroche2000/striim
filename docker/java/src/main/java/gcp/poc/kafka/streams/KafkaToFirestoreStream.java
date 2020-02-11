@@ -94,6 +94,8 @@ public class KafkaToFirestoreStream {
 				latch.countDown();
 			}
 		});
+		
+		System.out.println("Started "+KafkaToFirestoreStream.class.getCanonicalName());
 
 		try {
 			streams.start();

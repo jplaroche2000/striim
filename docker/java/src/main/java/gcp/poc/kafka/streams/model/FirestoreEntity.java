@@ -32,19 +32,21 @@ public abstract class FirestoreEntity {
 	}
 
 	public void persist(Batch batch) {
-		System.out.println("persist");
-		batch.add(newEntity(batch.getDatastore()));
+		Entity entity = newEntity(batch.getDatastore());
+		System.out.println("Adding add operation to datastore batch - key: "+entity.getKey());
+		batch.add(entity);
 	}
 
 	public void update(Batch batch) {
-		System.out.println("update");
-		batch.update(updatedEntity(batch.getDatastore()));
+		Entity entity = updatedEntity(batch.getDatastore());
+		System.out.println("Adding update operation to datastore batch - key: "+entity.getKey());
+		batch.update(entity);
 	}
 
 	public void delete(Batch batch) {
-		System.out.println("delete");
-		batch.delete(getKey(batch.getDatastore()));
-
+		Key key = getKey(batch.getDatastore());
+		System.out.println("Adding delete operation to datastore batch - key: "+key.toString());
+		batch.delete(key);
 	}
 	
 	protected abstract Key getKey(Datastore datastore);
