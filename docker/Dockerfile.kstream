@@ -15,9 +15,7 @@ COPY java/start-kstream.sh /u01/oracle/start-streaming.sh
 # YOU MUST put YOUR GCP KEY under /u01/oracle and reference it here for datastore service account!
 COPY java/*.json /u01/oracle
 
-RUN  chown -R oracle:oracle /u01/oracle/*.jar && chmod ug+rwx u01/oracle/*.jar && chown -R oracle:oracle /u01/oracle/*.json && chmod ug+rw u01/oracle/*.json && chown -R oracle:oracle /u01/oracle/*.sh && chmod ug+rwx u01/oracle/*.sh
-
-USER oracle
+RUN  chmod ug+rwx u01/oracle/*.jar && chmod ug+rw u01/oracle/*.json && chmod ug+rwx u01/oracle/*.sh
 
 WORKDIR /u01/oracle
 
