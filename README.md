@@ -33,7 +33,7 @@ Prerequisites:
       
       `-` "zoo2:34.95.11.112"  
 
-    **THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092**
+    **THIS ASSUMES YOU HAVE KAFKA BROKER HOSTS NAMED zoo1 and zoo2 and advertising on port 9092**
  
  
 2. Start the Docker stack
