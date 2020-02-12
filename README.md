@@ -8,7 +8,7 @@ This setup uses custom pre-built Docker images available on docker hub
 (https://hub.docker.com/r/jplarochedocker) and docker-compose.
 
 Prerequisites:
-- a running local Docker environment
+- a running local Docker environment ([setup instructions for GCP](https://docs.docker.com/install/linux/docker-ce/debian/))
 - a running local or remote Kafka environment ([setup instructions for GCP](https://github.com/jplaroche2000/striim/blob/master/kafka/Build%20a%20Kafka%20Cluster%20on%20GCP.pdf))
 
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
