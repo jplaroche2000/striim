@@ -30,6 +30,8 @@ Prerequisites:
     extra_hosts:
       
       `-` "zoo1:34.95.11.111"  
+      
+      `-` "zoo2:34.95.11.112"  
 
     **THIS ASSUMES YOU HAVE A KAFKA BROKER HOST NAMED zoo1 and advertising on port 9092**
  
