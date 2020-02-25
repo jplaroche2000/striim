@@ -4,12 +4,11 @@ Quick setup:
 
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
-This setup uses custom pre-built Docker images available on docker hub 
-(https://hub.docker.com/r/jplarochedocker) and docker-compose yaml.
-
 Prerequisites:
 - a running local Docker environment ([setup instructions for GCP -Debian OS](https://docs.docker.com/install/linux/docker-ce/debian/))
 - a running local or remote Kafka environment ([setup instructions for GCP - Debian OS](https://github.com/jplaroche2000/striim/blob/master/kafka/Build%20a%20Kafka%20Cluster%20on%20GCP.pdf))
+- Enabled GCP Firestore database in Datastore mode
+- a GCP service account to access your GCP Firestore datastore.  To create one follow the steps descibed ([here] (Creating and managing service account keys)), and copy the service account json file under striim/docker/java/.
 
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
