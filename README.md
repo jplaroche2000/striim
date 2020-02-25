@@ -42,15 +42,21 @@ Prerequisites:
     
       GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/XXXXXXXXXXXXXXX.json"
 
- 
-2. Start the Docker stack
+
+2. Build the custom images
+
+    ```sh
+    docker-compose build
+    ```
+
+3. Start the Docker stack
 
     ```sh
     docker-compose up -d
     ```
 
 
-3. Access striim and add application
+4. Access striim and add application
 
     http://`<`Docker host public IP`>`
     
@@ -68,16 +74,14 @@ Prerequisites:
    
     Start App
    
-4. Access database and modify records to see changes replicated to Kafka topics
+5. Access database and modify records to see changes replicated to Kafka topics
  
     ```sh
     sqlplus scott/tiger@//<Public IP of oracle container>:1521/XE
     ```
    
-5. To stop the Docker stack
+6. To stop the Docker stack
 
     ```sh
     docker-compose down
     ```  
-   
-   
