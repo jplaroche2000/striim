@@ -10,7 +10,7 @@ Prerequisites:
 - Enabled GCP Firestore database in Datastore mode
 - a GCP service account to access your GCP Firestore datastore.  To create one follow the steps descibed ([here](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-console)), and copy the service account json file under striim/docker/java/.
 
-WARNING: Striim currently does not offer anymore a pre-built docker image (striim/evalversion).  You will need to download the binary install and configure it - https://www.striim.com/docs/en/installing-striim.html
+**WARNING: Striim does not offer anymore a pre-built docker image (striim/evalversion).  You will need to download the binary install and configure it - https://www.striim.com/docs/en/installing-striim.html**
 
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
