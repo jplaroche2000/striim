@@ -5,7 +5,7 @@ Quick setup:
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
 This setup uses custom pre-built Docker images available on docker hub 
-(https://hub.docker.com/r/jplarochedocker) and requires docker-compose binaries to be installed.
+(https://hub.docker.com/r/jplarochedocker) and requires docker-compose binaries to be installed (https://docs.docker.com/compose/install/).
 
 Prerequisites:
 - a running local Docker environment ([setup instructions for GCP -Debian OS](https://docs.docker.com/install/linux/docker-ce/debian/))
