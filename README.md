@@ -77,7 +77,7 @@ Prerequisites:
 5. To stop the Docker stack
 
     ```sh
-    docker stack rm striim_kafka
+    docker-compose down
     ```  
    
    
