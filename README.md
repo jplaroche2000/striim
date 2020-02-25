@@ -23,7 +23,7 @@ Prerequisites:
     cd striim/docker
     ```
 
-    then edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka host.
+    then edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka broker(s).
 
     Ex.:  
     
