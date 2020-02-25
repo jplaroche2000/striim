@@ -46,7 +46,7 @@ Prerequisites:
 2. Start the Docker stack
 
     ```sh
-    docker stack deploy --compose-file docker-compose.yml striim_kafka
+    docker-compose up -d
     ```
 
 
