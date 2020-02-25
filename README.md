@@ -22,7 +22,7 @@ Prerequisites:
     cd striim/docker
     ```
 
-    then edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka broker(s).
+    Edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka broker(s).
 
     Ex.:  
     
@@ -34,6 +34,14 @@ Prerequisites:
 
     **THIS ASSUMES YOU HAVE KAFKA BROKER HOSTS NAMED zoo1 and zoo2 and advertising on port 9092**
  
+    Edit docker-compose.yml/striim/environment section to reflect the name of the service account json file.
+    
+    Ex.:
+    
+    environment:
+    
+      GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/XXXXXXXXXXXXXXX.json"
+
  
 2. Start the Docker stack
 
