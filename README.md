@@ -7,10 +7,8 @@ Quick setup:
 Prerequisites:
 - a running local Docker environment ([setup instructions for GCP -Debian OS](https://docs.docker.com/install/linux/docker-ce/debian/))
 - a running local or remote Kafka environment ([setup instructions for GCP - Debian OS](https://github.com/jplaroche2000/striim/blob/master/kafka/Build%20a%20Kafka%20Cluster%20on%20GCP.pdf))
-- Enabled GCP Firestore database in Datastore mode
-- a GCP service account to access your GCP Firestore datastore.  To create one follow the steps descibed ([here](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-console)), and copy the service account json file under striim/docker/java/.
-
-**WARNING: Striim does not offer anymore a pre-built docker image (striim/evalversion).  You will need to download the binary install and configure it - https://www.striim.com/docs/en/installing-striim.html**
+- a GCP Firestore database in [Datastore mode](https://cloud.google.com/datastore/docs/quickstart)
+- a GCP service account to access your GCP Firestore datastore.  To create one follow the steps descibed [here](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-console), and copy the service account json file under striim/docker/java/ of the cloned git project.
 
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
@@ -24,25 +22,25 @@ Prerequisites:
     cd striim/docker
     ```
 
-    Edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka broker(s).
+    a. Edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka broker(s).
 
-    Ex.:  
+    >extra_hosts:
     
-    extra_hosts:
-      
-      `-` "zoo1:34.95.11.111"  
-      
-      `-` "zoo2:34.95.11.112"  
+    >`-` "zoo1:34.95.11.111" 
+    
+    >`-` "zoo2:34.95.11.112"  
 
     **THIS ASSUMES YOU HAVE KAFKA BROKER HOSTS NAMED zoo1 and zoo2 and advertising on port 9092**
  
-    Edit docker-compose.yml/striim/environment section to reflect the name of the service account json file.
+    b. Edit docker-compose.yml/striim/environment section to reflect the name of the service account json file, the GCP project where Firebase is activated and one of the Kafka broker hostname
     
-    Ex.:
+    >environment:
     
-    environment:
+    >GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/XXXXXXXXXXXXXXX.json"
     
-      GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/XXXXXXXXXXXXXXX.json"
+    >DS_PROJECT_ID: "my-gcp-project"
+    
+    >KAFKA_BROKER: "zoo1"
 
 
 2. Build the custom images
@@ -87,3 +85,9 @@ Prerequisites:
     ```sh
     docker-compose down
     ```  
+
+Troobleshooting:
+---------------
+
+The Striim pre-built docker image (striim/evalversion) has been missing from time to time.  You will need to download the binary install and configure it if the striim container build fails - https://www.striim.com/docs/en/installing-striim.html
+
