@@ -3,7 +3,7 @@
 # with a GCP service account key for Datastore access (change to reflect your own key and GCP project)
 # - https://cloud.google.com/iam/docs/creating-managing-service-account-keys
 #
-FROM oracle/serverjre:8
+FROM store/oracle/serverjre:1.8.0_241-b07
 
 MAINTAINER Jean-Philippe Laroche <jplaroche_2000@yahoo.ca>
 
