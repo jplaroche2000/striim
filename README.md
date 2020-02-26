@@ -62,7 +62,7 @@ Prerequisites:
     
     admin/admin
    
-    In web console:
+    <u>In web console:</u>
     
     APPS > + AddApp > Import Existing App
    
