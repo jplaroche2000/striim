@@ -62,7 +62,8 @@ Prerequisites:
     
     admin/admin
    
-    <u>In web console:</u>
+    In Striim web console:
+    ----------------------
     
     APPS > + AddApp > Import Existing App
    
