@@ -25,7 +25,9 @@ Prerequisites:
     a. Edit docker-compose.yml/extra_hosts section to reflect the public IP of your Kafka broker(s).
 
     >extra_hosts:
+    
     >`-` "zoo1:34.95.11.111" 
+    
     >`-` "zoo2:34.95.11.112"  
 
     **THIS ASSUMES YOU HAVE KAFKA BROKER HOSTS NAMED zoo1 and zoo2 and advertising on port 9092**
@@ -33,8 +35,11 @@ Prerequisites:
     b. Edit docker-compose.yml/striim/environment section to reflect the name of the service account json file, the GCP project where Firebase is activated and one of the Kafka broker hostname
     
     >environment:
+    
     >GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/XXXXXXXXXXXXXXX.json"
+    
     >DS_PROJECT_ID: "my-gcp-project"
+    
     >KAFKA_BROKER: "zoo1"
 
 
