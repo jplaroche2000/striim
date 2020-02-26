@@ -28,9 +28,9 @@ Prerequisites:
     
     extra_hosts:
       
-      `-` "zoo1:34.95.11.111"  
+    ...`-` "zoo1:34.95.11.111"  
       
-      `-` "zoo2:34.95.11.112"  
+    ...`-` "zoo2:34.95.11.112"  
 
     **THIS ASSUMES YOU HAVE KAFKA BROKER HOSTS NAMED zoo1 and zoo2 and advertising on port 9092**
  
@@ -40,7 +40,7 @@ Prerequisites:
     
     environment:
     
-      GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/XXXXXXXXXXXXXXX.json"
+    ...GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/XXXXXXXXXXXXXXX.json"
 
 
 2. Build the custom images
