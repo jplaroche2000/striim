@@ -63,10 +63,10 @@ Prerequisites:
     admin/admin
    
     In Striim web console:
-    ----------------------
     
     APPS > + AddApp > Import Existing App
    
+    
     Load tql fle located at root of git project:
     
     striim/Test-MultiFeeds.tql
