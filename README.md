@@ -87,3 +87,6 @@ Prerequisites:
     ```sh
     docker-compose down
     ```  
+
+Troobleshooting:
+---------------
