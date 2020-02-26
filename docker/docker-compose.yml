@@ -23,7 +23,10 @@ services:
       ORACLE_PWD: "tiger"
 
   striim:
-    image: jplarochedocker/custom-striim:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.striim
+    image: custom-striim:latest
     ports:
       - target: 9080
         published: 80
@@ -34,18 +37,23 @@ services:
     environment:
       STRIIM_ACCEPT_EULA: "Y"
     extra_hosts:
-    - "zoo1:35.231.91.190"
-    - "zoo2:34.74.139.149"
+    - "zoo1:10.142.0.3"
+    - "zoo2:10.142.0.4"
 
   java-kstream:
-    image: jplarochedocker/custom-kstream:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.kstream
+    image: custom-kstream:latest
     networks:
       - striim_oracle_net
     environment:
       GOOGLE_APPLICATION_CREDENTIALS: "/u01/oracle/telus-project-001-7a785be0cc40.json"
+      DS_PROJECT_ID: "telus-project-001"
+      KAFKA_BROKER: "zoo1"
     extra_hosts:
-    - "zoo1:35.231.91.190"
-    - "zoo2:34.74.139.149"
+    - "zoo1:10.142.0.3"
+    - "zoo2:10.142.0.4"
 
 networks:
   striim_oracle_net:
