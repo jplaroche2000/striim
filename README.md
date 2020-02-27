@@ -48,6 +48,7 @@ Prerequisites:
     ```sh
     docker-compose build
     ```
+    If the Striim image build fails, see troobleshooting section below
 
 3. Start the Docker stack
 
