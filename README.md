@@ -5,7 +5,7 @@ Quick setup:
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
 Prerequisites:
-- a Docker Hub account (to pull retrieve Oracle JDK 8)
+- a Docker Hub account (to pull Oracle JDK 8 image)
 - a running local Docker environment ([setup instructions for GCP -Debian OS](https://docs.docker.com/install/linux/docker-ce/debian/))
 - a running local or remote Kafka environment ([setup instructions for GCP - Debian OS](https://github.com/jplaroche2000/striim/blob/master/kafka/Build%20a%20Kafka%20Cluster%20on%20GCP.pdf))
 - a GCP Firestore database in [Datastore mode](https://cloud.google.com/datastore/docs/quickstart)
