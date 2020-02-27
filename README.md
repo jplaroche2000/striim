@@ -4,7 +4,7 @@ Quick setup:
 
 Objective:
 
-Replicating Oracle dtabase tales to a GCP Firestore datastore with Striim and Kafka
+Replicating Oracle database tables to a GCP Firestore datastore with Striim and Kafka
 
 --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--
 
