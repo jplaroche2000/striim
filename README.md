@@ -10,7 +10,7 @@ Replicating Oracle database tables to a GCP Firestore datastore with Striim and 
 
 Prerequisites:
 - a Docker Hub account (to pull Oracle JDK 8 image)
-- a running local Docker environment ([setup instructions for GCP -Debian OS](https://docs.docker.com/install/linux/docker-ce/debian/))
+- a running local Docker environment with at least 15 GB of disk storage and 7.5 GB RAM ([setup instructions for GCP -Debian OS](https://docs.docker.com/install/linux/docker-ce/debian/))
 - a running local or remote Kafka environment ([setup instructions for GCP - Debian OS](https://github.com/jplaroche2000/striim/blob/master/kafka/Build%20a%20Kafka%20Cluster%20on%20GCP.pdf))
 - a GCP Firestore database in [Datastore mode](https://cloud.google.com/datastore/docs/quickstart)
 - a GCP service account to access your GCP Firestore datastore.  To create one follow the steps descibed [here](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-console), and copy the service account json file under striim/docker/java/ of the cloned git project.
