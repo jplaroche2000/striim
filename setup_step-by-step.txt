@@ -23,7 +23,7 @@ copy installation archive (oracle-xe-11.2.0-1.0.x86_64.rpm.zip) obtained form Or
 
 cd docker-images-oracle/OracleDatabase/SingleInstance/dockerfiles
 
-./buildDockerImage.sh -v 11.2.0.2 -x –i
+./buildDockerImage.sh -v 11.2.0.2 -x â€“i
 
 
 b) Prepare Docker host:
@@ -95,13 +95,6 @@ Deploy App
 
 Start App
 
-
-Alternative: Running with docker-compose:
------------------------------------------
-
-Custom images must be used:
-
-docker stack deploy --compose-file docker-compose.yml striim_kafka
 
 
 
