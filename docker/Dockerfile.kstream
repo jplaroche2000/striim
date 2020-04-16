@@ -19,7 +19,7 @@ RUN  chmod ug+rwx u01/oracle/*.jar && chmod ug+rw u01/oracle/*.json && chmod ug+
 
 WORKDIR /u01/oracle
 
-ENTRYPOINT ["./start-streaming.sh"]
+ENTRYPOINT ["./start-kstream.sh"]
 
 
 
